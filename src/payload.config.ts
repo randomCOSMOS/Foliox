@@ -1,10 +1,12 @@
-import sharp from 'sharp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
+import nodemailer from 'nodemailer'
+import 'dotenv/config';
 
-import { Projects, Achievements, Blog } from './collections'
-import { Logo, Icon } from './graphics'
+import { Users } from './users'
+import { Projects, Achievements, Blog } from './collections';
 
 export default buildConfig({
   admin: {
@@ -20,20 +22,35 @@ export default buildConfig({
     },
     components: {
       graphics: {
-        Logo,
-        Icon
-      }
-    }
+        Logo: '/components/Logo',
+        Icon: '/components/Icon',
+      },
+      beforeNavLinks: ['/components/BeforeNavLinks'],
+    },
+    theme: 'dark'
   },
+
+  email: nodemailerAdapter({
+    defaultFromAddress: 'foliox-portfolio@gmail.com',
+    defaultFromName: 'Foliox',
+    transport: nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      },
+    }),
+  }),
 
   editor: lexicalEditor(),
 
-  collections: [Projects, Achievements, Blog],  
+  collections: [Users, Projects, Achievements, Blog],  
 
-  secret: process.env.PAYLOAD_SECRET || 'supersecretdevkeyhehehaha',
+  secret: process.env.PAYLOAD_SECRET || '',
   db: postgresAdapter({
     pool: {
-        connectionString: process.env.DATABASE_URI || 'postgres://postgres:o@localhost:5432/test',
+        connectionString: process.env.DATABASE_URI,
     }
   }),
 })

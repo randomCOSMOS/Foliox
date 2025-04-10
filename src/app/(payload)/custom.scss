@@ -1,0 +1,82 @@
+@import '~@payloadcms/ui/scss';
+
+:root {
+  // Dark theme color palette
+  --theme-bg: #121212;
+  --theme-input-bg: #1e1e1e;
+  --theme-text: #ffffff;
+  --theme-border-color: #333333;
+  
+  --theme-success-500: #4caf50;
+  --theme-warning-500: #ffc107;
+  --theme-error-500: #f44336;
+  
+  // Brand color (adjust as needed)
+  --theme-brand: #3b82f6;
+  
+  // Elevation colors for depth
+  --theme-elevation-0: #121212;
+  --theme-elevation-50: #1e1e1e;
+  --theme-elevation-100: #242424;
+  --theme-elevation-150: #2a2a2a;
+  --theme-elevation-200: #323232;
+  --theme-elevation-250: #404040;
+  --theme-elevation-300: #4a4a4a;
+}
+
+@layer payload {
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+  }
+
+  .nav {
+    background-color: var(--theme-elevation-50);
+    border-right: 1px solid var(--theme-elevation-100);
+    
+    &__link {
+      color: var(--theme-text);
+      
+      &:hover {
+        background-color: var(--theme-elevation-100);
+      }
+      
+      &--active {
+        background-color: var(--theme-elevation-100);
+        color: var(--theme-brand);
+      }
+    }
+  }
+
+  .dashboard__card {
+    background-color: var(--theme-elevation-50);
+    border: 1px solid var(--theme-elevation-100);
+  }
+
+  .btn {
+    &--style-primary {
+      background-color: var(--theme-brand);
+      color: var(--theme-text);
+    }
+  }
+
+  .table {
+    &__header-cell {
+      background-color: var(--theme-elevation-100);
+    }
+    
+    &__row {
+      &:hover {
+        background-color: var(--theme-elevation-100);
+      }
+    }
+  }
+
+  .field-type {
+    &__input {
+      background-color: var(--theme-input-bg);
+      color: var(--theme-text);
+      border-color: var(--theme-border-color);
+    }
+  }
+}

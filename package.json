@@ -6,15 +6,19 @@
     "dev": "next dev --turbopack -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "payload generate:importmap"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.33.0",
     "@payloadcms/email-nodemailer": "^3.33.0",
     "@payloadcms/next": "^3.33.0",
     "@payloadcms/richtext-lexical": "^3.33.0",
+    "@payloadcms/ui": "^3.33.0",
+    "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
     "next": "15.2.4",
+    "nodemailer": "^6.10.0",
     "payload": "^3.33.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -23,6 +27,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
