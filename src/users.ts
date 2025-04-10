@@ -1,12 +1,4 @@
-import type { CollectionConfig, CollectionBeforeLoginHook } from 'payload';
-
-const beforeLoginHook: CollectionBeforeLoginHook = async ({ user }) => {
-  // Check if user is verified before allowing login
-  if (user && !user._verified) {
-    throw new Error('Please verify your email before logging in.');
-  }
-  return user;
-};
+import type { CollectionConfig } from 'payload';
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -14,18 +6,6 @@ export const Users: CollectionConfig = {
     loginWithUsername: {
       allowEmailLogin: true,
       requireEmail: true,
-    },
-    verify: {
-      generateEmailHTML: ({ token, user }) => {
-        // Create verification URL
-        const url = `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/users/verify/${token}`;
-        
-        return `
-          <h1>Verify your email address</h1>
-          <p>Click the link below to verify your email address for Foliox:</p>
-          <p><a href="${url}">Verify Email</a></p>
-        `;
-      },
     },
   },
   admin: {
@@ -65,8 +45,5 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
-  ],
-  hooks: {
-    beforeLogin: [beforeLoginHook],
-  },
+  ]
 };

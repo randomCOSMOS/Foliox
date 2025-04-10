@@ -1,0 +1,10 @@
+[
+    {
+        "username": "cosmos",
+        "uri": "postgres://postgres:o@localhost:5432/test"
+    },
+    {
+        "username": "random",
+        "uri": "postgres://postgres:o@localhost:5432/test2"
+    }
+]

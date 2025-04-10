@@ -3,7 +3,6 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import nodemailer from 'nodemailer'
-import 'dotenv/config';
 
 import { Users } from './users'
 import { Projects, Achievements, Blog } from './collections';
@@ -25,6 +24,9 @@ export default buildConfig({
         Logo: '/components/Logo',
         Icon: '/components/Icon',
       },
+      // logout: {
+      //   Button: '/components/LogoutButton',
+      // },
       beforeNavLinks: ['/components/BeforeNavLinks'],
     },
     theme: 'dark'
@@ -35,7 +37,7 @@ export default buildConfig({
     defaultFromName: 'Foliox',
     transport: nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      port: Number(process.env.SMTP_PORT),
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS

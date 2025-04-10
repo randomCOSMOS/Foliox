@@ -65,6 +65,9 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      <a href="/login"><button>Login?</button></a>
+      <a href="/signup"><button>Signup?</button></a>
     </main>
   )
 }
