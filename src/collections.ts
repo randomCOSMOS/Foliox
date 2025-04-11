@@ -43,7 +43,14 @@ export const Projects: CollectionConfig = {
       required: true,
       label: 'Author Name',
     },
-  ]
+    {
+      name: 'repository',
+      type: 'text',
+      required: true,
+      label: 'Github Repository',
+    },
+  ],
+  upload: true
 }
 
 export const Achievements: CollectionConfig = {
@@ -101,6 +108,7 @@ export const Blog: CollectionConfig = {
   slug: 'blog-section',
   admin: {
     useAsTitle: 'title',
+    description: 'Cover Photo',
     group: 'Content',
   },
   fields: [
@@ -109,13 +117,6 @@ export const Blog: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Blog Title',
-    },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      label: 'Slug',
     },
     {
       name: 'author',
@@ -130,4 +131,5 @@ export const Blog: CollectionConfig = {
       label: 'Content',
     },
   ],
+  upload: true,
 };

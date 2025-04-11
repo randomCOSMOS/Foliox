@@ -88,8 +88,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'personal-info': PersonalInfo;
+  };
+  globalsSelect: {
+    'personal-info': PersonalInfoSelect<false> | PersonalInfoSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -163,8 +167,18 @@ export interface Project {
       }[]
     | null;
   author: string;
+  repository: string;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -187,17 +201,27 @@ export interface Achievement {
   createdAt: string;
 }
 /**
+ * Cover Photo
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog-section".
  */
 export interface BlogSection {
   id: number;
   title: string;
-  slug: string;
   author: string;
   content: string;
   updatedAt: string;
   createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -295,8 +319,18 @@ export interface ProjectsSelect<T extends boolean = true> {
         id?: T;
       };
   author?: T;
+  repository?: T;
   updatedAt?: T;
   createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -323,11 +357,19 @@ export interface AchievementsSelect<T extends boolean = true> {
  */
 export interface BlogSectionSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
   author?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -360,6 +402,54 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * Manage your information to be displayed on the portfolio.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "personal-info".
+ */
+export interface PersonalInfo {
+  id: number;
+  name: string;
+  tagline: string;
+  currentPosition?: string | null;
+  contactInfo: {
+    email: string;
+    phone?: string | null;
+  };
+  socialLinks?: {
+    linkedin?: string | null;
+    github?: string | null;
+    instagram?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "personal-info_select".
+ */
+export interface PersonalInfoSelect<T extends boolean = true> {
+  name?: T;
+  tagline?: T;
+  currentPosition?: T;
+  contactInfo?:
+    | T
+    | {
+        email?: T;
+        phone?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        linkedin?: T;
+        github?: T;
+        instagram?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

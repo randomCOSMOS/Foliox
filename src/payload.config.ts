@@ -6,6 +6,7 @@ import nodemailer from 'nodemailer'
 
 import { Users } from './users'
 import { Projects, Achievements, Blog } from './collections';
+import { PersonalInfo } from './globals'
 
 export default buildConfig({
   admin: {
@@ -24,9 +25,6 @@ export default buildConfig({
         Logo: '/components/Logo',
         Icon: '/components/Icon',
       },
-      // logout: {
-      //   Button: '/components/LogoutButton',
-      // },
       beforeNavLinks: ['/components/BeforeNavLinks'],
     },
     theme: 'dark'
@@ -48,6 +46,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   collections: [Users, Projects, Achievements, Blog],  
+  globals: [PersonalInfo],
 
   secret: process.env.PAYLOAD_SECRET || '',
   db: postgresAdapter({
