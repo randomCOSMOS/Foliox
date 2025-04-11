@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     // Email content
     const mailOptions = {
       from: 'foliox.portfolio@gmail.com',
-      to: 'srijanwhat2@gmail.com', // Your personal email to receive messages
+      to: 'srijanwhatx@gmail.com', // Your personal email to receive messages
       subject: `Portfolio Contact: ${subject || 'New message from your website'}`,
       html: `
         <h1>New Contact Form Submission</h1>
