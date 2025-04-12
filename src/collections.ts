@@ -50,7 +50,9 @@ export const Projects: CollectionConfig = {
       label: 'Github Repository',
     },
   ],
-  upload: true
+  upload: {
+      mimeTypes: ['image/*'],
+  }
 }
 
 export const Achievements: CollectionConfig = {
